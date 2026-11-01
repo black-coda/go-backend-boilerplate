@@ -1,0 +1,12 @@
+
+env: development
+
+port: "8080"
+read_timeout: 10
+write_timeout: 10
+idle_timeout: 60
+
+cors_allowed_origins:
+  - "http://localhost:3000"
+  - "http://localhost:8000"
+  - "https://example.com"
