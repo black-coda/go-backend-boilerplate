@@ -9,4 +9,4 @@ idle_timeout: 60
 cors_allowed_origins:
   - "http://localhost:3000"
   - "http://localhost:8000"
-  - "https://example.com"
+  - "http://127.0.0.1:8000"

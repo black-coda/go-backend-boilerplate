@@ -38,7 +38,6 @@ func (e *HTTPError) Error() string {
 
 func (e *HTTPError) Is(target error) bool {
 	_, ok := target.(*HTTPError)
-
 	return ok
 }
 

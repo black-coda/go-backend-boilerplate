@@ -70,10 +70,12 @@ func LoadConfig() (*Config, error) {
 		Int("pid", os.Getpid()).
 		Str("go_version", buildInfo.GoVersion).
 		Logger()
-	logger.WithLevel(zerolog.PanicLevel).Msg("panic message")
+	// logger.WithLevel(zerolog.PanicLevel).Msg("panic message")
 
 	k := koanf.New(".")
 
+	// check if the config.yaml exists
+	// if fi := file.Provider("config.yaml"); fi.Read(){}
 	// Loading YAML Config
 	if err := k.Load(
 		file.Provider("config.yaml"),
