@@ -126,7 +126,9 @@ func WithTraceContext(logger zerolog.Logger, txn *newrelic.Transaction) zerolog.
 		return logger
 	}
 	metaData := txn.GetTraceMetadata()
-	return logger.With().Str("trace.id", metaData.TraceID).Str("span.id", metaData.SpanID).Logger()
+	return logger.With().
+		Str("trace.id", metaData.TraceID).
+		Str("span.id", metaData.SpanID).Logger()
 }
 
 func FormatSQLWithArgs(sql string, args []any) string {
@@ -155,7 +157,7 @@ func NewPgxLogger(level zerolog.Level) zerolog.Logger {
 				}
 				return v
 			case []byte:
-				var obj interface{}
+				var obj any
 				if err := json.Unmarshal(v, &obj); err == nil {
 					pretty, _ := json.MarshalIndent(obj, "", "    ")
 					return "\n" + string(pretty)
