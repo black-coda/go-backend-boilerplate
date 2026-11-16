@@ -84,3 +84,20 @@ desktop.ini
 .vscode/
 *.swp
 *.swo
+
+### What middleware does
+Middleware executes before or after a request handler.
+
+Common middleware responsibilities include:
+- Authentication
+- Authorization
+- Logging
+- Request tracing
+- Rate limiting
+- Request validation
+- Panic recovery
+- Error handling
+
+
+
+When errors are wrapped using fmt.Errorf("...: %w", err), simple type assertions (like err.(*MyError)) fail because the custom error is buried inside wrapper layers. errors.As() traverses the entire chain of wrapped errors. If it finds an error matching the type of target, it copies that error's value into target and returns true
