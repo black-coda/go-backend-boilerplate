@@ -13,10 +13,10 @@ import (
 )
 
 type GlobalMiddlewares struct {
-	server server.Server
+	server *server.Server
 }
 
-func NewGlobalMiddlewares(server server.Server) *GlobalMiddlewares {
+func NewGlobalMiddlewares(server *server.Server) *GlobalMiddlewares {
 	return &GlobalMiddlewares{
 		server: server,
 	}

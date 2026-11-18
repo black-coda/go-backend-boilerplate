@@ -1,12 +1,52 @@
+primary:
+  env: CHANGE_ME
 
-env: development
+server:
+  port: "8080"
+  read_timeout: 10
+  write_timeout: 10
+  idle_timeout: 60
+  cors_allowed_origins:
+    - "http://localhost:3000"
+    - "http://localhost:8000"
+    - "http://127.0.0.1:8000"
 
-port: "8080"
-read_timeout: 10
-write_timeout: 10
-idle_timeout: 60
+database:
+  host: localhost
+  port: 5432
+  user: postgres
+  password: CHANGE_ME
+  name: boilerplate
+  ssl_mode: disable
+  max_open_conns: 10
+  max_idle_conns: 5
+  conn_max_lifetime: 300
+  conn_max_idle_time: 30
 
-cors_allowed_origins:
-  - "http://localhost:3000"
-  - "http://localhost:8000"
-  - "http://127.0.0.1:8000"
+auth:
+  secret_key: CHANGE_ME
+
+redis:
+  address: localhost:6379
+
+integration:
+  resend_api_key: CHANGE_ME
+
+observability:
+  service_name: boilerplate
+  logging:
+    level: info
+    format: json
+    slow_query_threshold: 100ms
+  new_relic:
+    license_key: CHANGE_ME
+    app_log_forwarding_enabled: true
+    distributed_tracing_enabled: true
+    debug_logging: false
+  health_checks:
+    enabled: true
+    interval: 30s
+    timeout: 5s
+    checks:
+      - database
+      - redis

@@ -56,8 +56,15 @@ type IntegrationConfig struct {
 	ResendAPIKey string `koanf:"resend_api_key" validate:"required"`
 }
 
+type ClerkConfig struct {
+	ClerkSecretKey      string `koanf:"clerk_secret_key" validate:"required"`
+	ClerkPublishableKey string `koanf:"clerk_publishable_key" validate:"required"`
+	ClerkJWTKey         string `koanf:"clerk_jwt_key" validate:"required"`
+}
+
 type AuthConfig struct {
-	SecretKey string `koanf:"secret_key" validate:"required"`
+	SecretKey string      `koanf:"secret_key" validate:"required"`
+	Clerk     ClerkConfig `koanf:"clerk" validate:"required"`
 }
 
 func LoadConfig() (*Config, error) {
